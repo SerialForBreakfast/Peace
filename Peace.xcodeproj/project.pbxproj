@@ -16,6 +16,7 @@
 		4478DDBE23FEE90D00BE91A4 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 4478DDBC23FEE90D00BE91A4 /* quotes.json */; };
 		4478DDBF23FEE90D00BE91A4 /* pictures.json in Resources */ = {isa = PBXBuildFile; fileRef = 4478DDBD23FEE90D00BE91A4 /* pictures.json */; };
 		4478DDC123FEE97100BE91A4 /* BundleDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478DDC023FEE97100BE91A4 /* BundleDecoding.swift */; };
+		4478DDC323FEEB2100BE91A4 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478DDC223FEEB2100BE91A4 /* Quote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4478DDBC23FEE90D00BE91A4 /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
 		4478DDBD23FEE90D00BE91A4 /* pictures.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pictures.json; sourceTree = "<group>"; };
 		4478DDC023FEE97100BE91A4 /* BundleDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleDecoding.swift; sourceTree = "<group>"; };
+		4478DDC223FEEB2100BE91A4 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				4478DDBD23FEE90D00BE91A4 /* pictures.json */,
 				4478DDBC23FEE90D00BE91A4 /* quotes.json */,
 				4478DDC023FEE97100BE91A4 /* BundleDecoding.swift */,
+				4478DDC223FEEB2100BE91A4 /* Quote.swift */,
 				4478DDB623FEE6B500BE91A4 /* Info.plist */,
 			);
 			path = Peace;
@@ -152,6 +155,7 @@
 				4478DDAD23FEE6B000BE91A4 /* ViewController.swift in Sources */,
 				4478DDA923FEE6B000BE91A4 /* AppDelegate.swift in Sources */,
 				4478DDC123FEE97100BE91A4 /* BundleDecoding.swift in Sources */,
+				4478DDC323FEEB2100BE91A4 /* Quote.swift in Sources */,
 				4478DDAB23FEE6B000BE91A4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
