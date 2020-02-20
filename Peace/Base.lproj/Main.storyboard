@@ -18,9 +18,23 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ifF-G3-h0P">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4K1-Kh-AIc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4K1-Kh-AIc">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCR-0P-V91">
+                                <rect key="frame" x="314" y="64" width="80" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Sjg-RA-6ke"/>
+                                    <constraint firstAttribute="width" constant="80" id="zYC-w2-YBq"/>
+                                </constraints>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bxk-fb-lMp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -32,6 +46,8 @@
                             <constraint firstItem="ifF-G3-h0P" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="ZFH-gs-vaC"/>
                             <constraint firstItem="ifF-G3-h0P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fGC-wx-Spk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4K1-Kh-AIc" secondAttribute="trailing" id="fYa-mq-nEb"/>
+                            <constraint firstItem="yCR-0P-V91" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="pam-a4-YdT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yCR-0P-V91" secondAttribute="trailing" constant="20" id="uMh-3W-oA0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

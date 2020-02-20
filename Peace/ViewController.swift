@@ -9,11 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBAction func shareTapped(_ sender: UIButton) {
+        guard let quote = shareQuote else {
+            fatalError("Can't share a non-existent quote.")
+        }
+        let shareMessage = "\"\(quote.text)\" - \(quote.author)"
+        let ac = UIActivityViewController(activityItems: [shareMessage], applicationActivities: nil)
+        ac.popoverPresentationController?.sourceView = sender
+        present(ac, animated: true)
+        
+    }
+    
     @IBOutlet weak var quote: UIImageView!
     @IBOutlet weak var background: UIImageView!
+    
     let quotes = Bundle.main.decode([Quote].self, from: "quotes.json")
     let images = Bundle.main.decode([String].self, from: "pictures.json")
+    
+    var shareQuote: Quote?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +53,10 @@ class ViewController: UIViewController {
             fatalError("No random quote.")
         }
         print(selectedQuote)
+        shareQuote = selectedQuote
         
         let insetAmount: CGFloat = 200
         let drawBounds = quote.bounds.inset(by: UIEdgeInsets(top: insetAmount, left: insetAmount, bottom: insetAmount, right: insetAmount))
-        
         
         var quoteRect = CGRect(x: 0, y: 0, width: .max, height: .max)
         
@@ -55,8 +69,7 @@ class ViewController: UIViewController {
         
         while true {
             font = UIFont(name: "Georgia-Italic", size: fontSize)!
-            attributes = [.font: font, .foregroundColor: UIColor.white]
-            //attributes = [font: font, ]
+            attributes = [.font: font!, .foregroundColor: UIColor.white]
             str = NSAttributedString(string: selectedQuote.text, attributes: attributes)
             
             quoteRect = str.boundingRect(with: CGSize(width: drawBounds.width, height: .greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
@@ -69,15 +82,13 @@ class ViewController: UIViewController {
         
         let format = UIGraphicsImageRendererFormat()
         format.opaque = false
-        let renderer = UIGraphicsImageRenderer(bounds: quoteRect, format: format)
+        let renderer = UIGraphicsImageRenderer(bounds: quoteRect.insetBy(dx: -30, dy: -30), format: format)
         quote.image = renderer.image(actions: { (ctx) in
             for i in 1...5 {  //Darken Shadow by 5x
                 ctx.cgContext.setShadow(offset: .zero, blur: CGFloat(i * 2), color: UIColor.black.cgColor)
                 str.draw(in: quoteRect)
             }
         })
-        
-        
     }
     
     
