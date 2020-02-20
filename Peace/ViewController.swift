@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
     
@@ -14,8 +15,7 @@ class ViewController: UIViewController {
         guard let quote = shareQuote else {
             fatalError("Can't share a non-existent quote.")
         }
-        let shareMessage = "\"\(quote.text)\" - \(quote.author)"
-        let ac = UIActivityViewController(activityItems: [shareMessage], applicationActivities: nil)
+        let ac = UIActivityViewController(activityItems: [quote.shareMessage], applicationActivities: nil)
         ac.popoverPresentationController?.sourceView = sender
         present(ac, animated: true)
         
@@ -31,7 +31,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (allowed, error) in
+            if allowed {
+                self.configureAlerts()
+            }
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -91,6 +95,40 @@ class ViewController: UIViewController {
         })
     }
     
+    func configureAlerts() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllDeliveredNotifications()
+        center.removeAllPendingNotificationRequests()
+        
+        let shuffledQuotes = quotes.shuffled()
+        var dateComponents = DateComponents()
+        
+        for i in 1...7 {
+            let content = UNMutableNotificationContent()
+            content.title = "Peace"
+            content.body = shuffledQuotes[i].text
+            
+            dateComponents.day = i
+            if let alertDate = Calendar.current.date(byAdding: dateComponents, to: Date()) {
+                var alertComponents = Calendar.current.dateComponents([.day, .month, .year], from: alertDate)
+                
+                alertComponents.hour = 8  // Set Alert to 8AM
+                
+                //let trigger = UNCalendarNotificationTrigger(dateMatching: alertComponents, repeats: false)
+                
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(i * 5), repeats: false)  //For testing
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                center.add(request) { (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+                
+            }
+            
+            
+        }
+    }
     
 }
 
